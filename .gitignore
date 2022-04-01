@@ -45,3 +45,7 @@ override.tf.json
 **/super-linter.report
 **/super-linter.report/*
 **/super-linter.log
+
+# Local dev override files
+tfdev
+dev.tfrc
