@@ -1,7 +1,7 @@
 # terraform-azapi-mg-hierarchysettings
 
 Terraform module for creation and management of Azure [management group hierarchy settings][msft_docs_mg_hierarchy_settings].
-Uses the new [`azapi`](https://github.com/Azure/terraform-provider-azapi) provider.
+Uses the new [`Azure/azapi`](https://github.com/Azure/terraform-provider-azapi) provider.
 
 
 ## Usage
