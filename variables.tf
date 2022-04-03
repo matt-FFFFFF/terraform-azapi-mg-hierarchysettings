@@ -19,7 +19,7 @@ variable "default_management_group_name" {
   description = "The name of the default management group. This is where all newly created subscriptions will be placed unless specified otherwise."
 }
 
-variable "" {
+variable "require_authorization_for_group_creation" {
   type = bool
   description = "By default, all Azure Active Directory security principals can create new management groups. When this setting is turned on, security principals must have management group write access to create new management groups."
 }
