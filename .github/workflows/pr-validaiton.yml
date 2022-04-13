@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout
+
+      - uses: hashicorp/setup-terraform@v1
+        name: Setup Terraform
+
+      - run: terraform init
+        name: Terraform init
+
+      - run: terraform fmt -check
+        name: Terraform fmt check
+
+      - run: terraform validate
+        name: Terraform validate

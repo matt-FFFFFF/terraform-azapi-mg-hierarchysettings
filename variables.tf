@@ -1,9 +1,9 @@
 variable "tenant_root_group_name" {
-  type = string
+  type        = string
+  description = "Usually the Azure AD tenant id - also the name of the tenant root management group."
   validation {
-    condition     = can(regex("^[a-f\\d]{4}(?:[a-f\\d]{4}-){4}[a-f\\d]{12}$", var.tenant_id))
+    condition     = can(regex("^[a-f\\d]{4}(?:[a-f\\d]{4}-){4}[a-f\\d]{12}$", var.tenant_root_group_name))
     error_message = "The value must be a UUID."
-    description   = "Usually the Azure AD tenant id - also the name of the tenant root management group."
   }
 }
 
@@ -15,8 +15,11 @@ variable "update_existing" {
 
 variable "default_management_group_name" {
   type        = string
-  condition   = can(regex("^[a-zA-Z0-9_-().]{90}$"))
   description = "The name of the default management group. This is where all newly created subscriptions will be placed unless specified otherwise."
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9_-().]{90}$", var.default_management_group_name))
+    error_message = "Name must be a maximum of 90 characters, consistying of: a-z, A-Z, 0-9, _, -, (, )."
+  }
 }
 
 variable "require_authorization_for_group_creation" {
