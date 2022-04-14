@@ -7,10 +7,15 @@ See documentation on the [Terraform module registry][tf_module_registry].
 
 ## Usage
 
+Example usage alongside Hashicorp's [AzureRM](https://github.com/hashicorp/terraform-provider-azurerm) Terraform provider:
+
 ```terraform
+
+data "azurerm_client_config" "current" {}
+
 module "hierarchy_settings" {
-  source                                   = "https://github.com/matt-FFFFFF/terraform-azapi-mg-hierarchysettings.git"
-  tenant_root_group_name                   = "ca5dcea8-e3e5-4aa2-9daa-629c40251888"
+  source                                   = "matt-FFFFFF/mg-hierarchysettings/azapi"
+  tenant_root_group_name                   = data.azurerm_client_config.current.tenant_id
   default_management_group_name            = "Sandboxes"
   require_authorization_for_group_creation = true
 }
