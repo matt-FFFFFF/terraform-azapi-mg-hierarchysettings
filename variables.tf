@@ -17,7 +17,7 @@ variable "default_management_group_name" {
   type        = string
   description = "The name of the default management group. This is where all newly created subscriptions will be placed unless specified otherwise."
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_-().]{90}$", var.default_management_group_name))
+    condition     = can(regex("^[().a-zA-Z0-9_-]{1,90}$", var.default_management_group_name))
     error_message = "Name must be a maximum of 90 characters, consistying of: a-z, A-Z, 0-9, _, -, (, )."
   }
 }
